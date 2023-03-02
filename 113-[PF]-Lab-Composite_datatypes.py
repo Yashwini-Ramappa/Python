@@ -41,10 +41,13 @@
 #Defining the dictionary
 #You will read in the file by using a module called csv. Additionally, you will make a deep copy of the data to store in memory by using a module called copy.
 #From the navigation pane of the IDE, choose (double-click) the .py file that you created in the previous Creating your Python exercise file section.
-#First, import the modules that you will use:
-import csv
-import copy
+#CSV : A text file allows data to be saved in table structured format
 
+#First, import the modules that you will use:
+import csv #here information from car_fleet.csv file will be pulled
+import copy #this command stores information imported from car_fleet.csv file to the memory
+
+#Next, define a dictionary that will serve as your composite type for reading the tabular data:
 myVehicle = {
     "vin" : "<empty>",
     "make" : "<empty>" ,
@@ -70,7 +73,8 @@ for key, value in myVehicle.items():
 #Finally, csv.reader() is a function that you are using from the csv library that you imported with the import csv statement.
 #Most of the rest of the code should be familiar.
 #Now, return to the Python file:
-with open('car_fleet.csv') as csvFile:
+#Enter the following code:
+with open('car_fleet.csv') as csvFile: #with open command works only if you have created a library, imported a library and a library should be in .CSV file format only
     csvReader = csv.reader(csvFile, delimiter=',')  
     lineCount = 0  
     for row in csvReader:
@@ -79,7 +83,7 @@ with open('car_fleet.csv') as csvFile:
             lineCount += 1  
         else:  
             print(f'vin: {row[0]} make: {row[1]}, model: {row[2]}, year: {row[3]}, range: {row[4]}, topSpeed: {row[5]}, zeroSixty: {row[6]}, mileage: {row[7]}')  
-            currentVehicle = copy.deepcopy(myVehicle)  
+            currentVehicle = copy.deepcopy(myVehicle)  #In case of deep copy, a copy of object is copied in other object. It means that any changes made to a copy of object do not reflect in the original object. In python, this is implemented using “deepcopy()” function.
             currentVehicle["vin"] = row[0]  
             currentVehicle["make"] = row[1]  
             currentVehicle["model"] = row[2]  
@@ -88,7 +92,7 @@ with open('car_fleet.csv') as csvFile:
             currentVehicle["topSpeed"] = row[5]  
             currentVehicle["zeroSixty"] = row[6]  
             currentVehicle["mileage"] = row[7]  
-            myInventoryList.append(currentVehicle)  
+            myInventoryList.append(currentVehicle)  #Append in Python is essential to add a single item at the end of a list, array, deque, or other collection types and data structures on the go.
             lineCount += 1  
     print(f'Processed {lineCount} lines.') #Though this code seems like a large amount of code to process, it mostly comprises statements that you saw in earlier labs. You have a for loop with an if-else statement followed by a print() statement at the end.
 
