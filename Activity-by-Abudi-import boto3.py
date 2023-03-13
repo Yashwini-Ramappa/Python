@@ -15,7 +15,7 @@ def launch_instances(image_id, region):
     print(f"Launched instance {instance_id} in {region}") #This command is using f-strings, which is a feature in Python 3.6 and above. It allows you to embed expressions inside string literals, using curly braces {}.
     #The print() function is being used to output a message to the console. The message includes the text "Launched instance", followed by the value of the instance_id variable, followed by the text "in", and then the value of the region variable. By using the curly braces inside the string and prefixing the string with the letter f, Python will replace the curly braces with the values of the corresponding variables.
 
-For example, if instance_id is "i-0123456789abcdef" and region is "us-east-1", the resulting message printed to the console would be "Launched instance i-0123456789abcdef in us-east-1".
+#For example, if instance_id is "i-0123456789abcdef" and region is "us-east-1", the resulting message printed to the console would be "Launched instance i-0123456789abcdef in us-east-1".
     # Launch an EC2 instance in a different region
     other_region = 'us-west-2' if region == 'us-east-1' else 'us-east-1'
     ec2_other_region = boto3.client('ec2', region_name=other_region)
